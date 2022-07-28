@@ -232,7 +232,6 @@ export default {
 #hy-swiper {
   overflow: hidden;
   position: relative;
-  transform: translateZ(0);
 }
 
 .swiper {
