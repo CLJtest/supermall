@@ -3,7 +3,7 @@
   <swiper>
     <swiper-item v-for="item in banners" :key="item.acm">
       <a :href="item.link">
-        <img :src="item.image" alt="" />
+        <img :src="item.image" alt="" @load="imageLoad" />
       </a>
     </swiper-item>
   </swiper>
@@ -24,7 +24,18 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      isLoad: false,
+    };
+  },
+  methods: {
+    // 监听图片有没有加载完 加载完了就调用这个方法
+    imageLoad() {
+      if (!this.isLoad) {
+        this.$emit("swiperImageLoad");
+        this.isLoad = true;
+      }
+    },
   },
   components: {
     Swiper,

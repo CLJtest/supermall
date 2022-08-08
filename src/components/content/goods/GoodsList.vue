@@ -2,7 +2,11 @@
 <template>
   <div class="goods">
     <!-- 根据goods这个数据来决定遍历多少个小的item 放到这里 -->
-    <goods-list-item v-for="item in goods" :key="item.acm" :goods-item="item" />
+    <goods-list-item
+      v-for="item in goods"
+      :key="item.goods"
+      :goods-item="item"
+    />
     <!-- {{ goods }} -->
   </div>
 </template>

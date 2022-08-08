@@ -10,6 +10,8 @@ const Shopcart = () =>
     import ('../views/shopcart/shopcart')
 const Profile = () =>
     import ('../views/profile/profile')
+const Detail = () =>
+    import ('../views/detail/Detail')
     //安装插件 
 Vue.use(VueRouter)
 
@@ -28,6 +30,13 @@ const routes = [{
     }, {
         path: '/profile',
         component: Profile
+    }, {
+        //1. 动态路由
+        path: '/detail/:iid',
+        component: Detail
+            // 2.query配置 goodsListIitem里面配置
+            // path: '/detail',
+            // component: Detail
     }]
     // 创建路由对象
 const router = new VueRouter({

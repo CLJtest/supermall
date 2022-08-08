@@ -1,7 +1,7 @@
 <!--  -->
 <template>
-  <div class="goods-item">
-    <img :src="goodsItem.show.img" alt="" />
+  <div class="goods-item" @click="itemClick">
+    <img :src="showImage" alt="" />
     <div class="goods-info">
       <p>{{ goodsItem.title }}</p>
       <span class="price">{{ goodsItem.price }}</span>
@@ -21,8 +21,32 @@ export default {
       },
     },
   },
+  computed: {
+    showImage() {
+      // 如果this.goodsItem.image为空 返回this.goodsItem.show.img
+
+      // 应该是！ this.goodsItem.image 这里.了image找不到 那就是undefined 就去执行||后面的内容
+      return this.goodsItem.image || this.goodsItem.show.img;
+      // 但是如果是这个顺序的话 你一开始判断的时候 .show show都找不到 就是undefined 你还要去再用undefined去.img 这个时候就报错了 所以顺序不能换
+      // return this.goodsItem.show.img || this.goodsItem.image;
+    },
+  },
   data() {
     return {};
+  },
+  methods: {
+    itemClick() {
+      // console.log("111");
+      // 1.动态路由的方法
+      this.$router.push("/detail/" + this.goodsItem.iid);
+      // 2.query方法
+      // this.$router.push({
+      //   path:'/detail/',
+      //   query:{
+      //     this.goodsItem.iid
+      //   }
+      // })
+    },
   },
 };
 </script>
